@@ -1,0 +1,180 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!-- LOVE BUTTONS -->
+<div class="love-buttons">
+    <button onclick="showMessage(0)">🌸 First Surprise</button>
+    <button onclick="showMessage(1)">💖 Secret Message</button>
+    <button onclick="showMessage(2)">🥹 Open My Heart</button>
+    <button onclick="showMessage(3)">💌 One More Thing...</button>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-card">
+        <h2 id="title"></h2>
+        <p id="message"></p>
+
+        <button onclick="closePopup()">💕 Close</button>
+    </div>
+</div>
+
+<!-- MINI GAME -->
+<h2 style="margin-top:40px;color:#ff4f8b;">
+❤️ Catch My Heart ❤️
+</h2>
+
+<p style="color:#666;">
+Tap the heart before it runs away!
+</p>
+
+<div id="heart">❤️</div>
+
+<div id="score">
+Hearts Collected: 0
+</div>
+
+<style>
+
+.love-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+}
+
+.love-buttons button{
+padding:14px 24px;
+border:none;
+border-radius:35px;
+background:linear-gradient(45deg,#ff5f9e,#ff99c8);
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 8px 20px rgba(255,105,180,.4);
+}
+
+.love-buttons button:hover{
+transform:scale(1.08);
+}
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(255,182,193,.45);
+display:none;
+justify-content:center;
+align-items:center;
+backdrop-filter:blur(8px);
+}
+
+.popup-card{
+background:white;
+padding:35px;
+border-radius:25px;
+width:90%;
+max-width:450px;
+animation:pop .5s;
+text-align:center;
+}
+
+.popup-card h2{
+color:#ff4f8b;
+margin-bottom:15px;
+}
+
+.popup-card p{
+line-height:1.8;
+color:#555;
+}
+
+.popup-card button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4f8b;
+color:white;
+cursor:pointer;
+}
+
+@keyframes pop{
+0%{transform:scale(.6);opacity:0;}
+80%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+#heart{
+position:fixed;
+font-size:60px;
+cursor:pointer;
+left:40%;
+top:70%;
+transition:.3s;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+#score{
+margin-top:25px;
+font-size:22px;
+color:#ff4f8b;
+font-weight:bold;
+}
+
+</style>
+
+<script>
+
+const titles=[
+"🌸 First Surprise",
+"💖 Secret Message",
+"🥹 Open My Heart",
+"💌 One More Thing..."
+];
+
+const messages=[
+"Hi Shanii! You're the most beautiful, smartest, kindest, and cutest girl I know. Even when you're a little clumsy, it just makes you more adorable. ❤️",
+
+"Every day I think about you. I'm so excited to see you, hear your voice, and spend time with you. You always make my heart happy. 💕",
+
+"I hope you always remember that you're enough, you're appreciated, and you're deeply loved. Thank you for being you. 🥹❤️",
+
+"I love you so much, Shanii. More than words can explain. I can't wait until I finally get to see you again. ❤️ Forever yours, Patrick."
+];
+
+function showMessage(i){
+document.getElementById("title").innerHTML=titles[i];
+document.getElementById("message").innerHTML=messages[i];
+document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+let score=0;
+
+const heart=document.getElementById("heart");
+
+heart.onclick=function(){
+
+score++;
+
+document.getElementById("score").innerHTML="Hearts Collected: "+score;
+
+heart.style.left=Math.random()*80+"vw";
+heart.style.top=Math.random()*75+"vh";
+
+if(score==10){
+
+alert("🥹 Congratulations, Shanii! ❤️\n\nYou caught all my hearts... but you'll never catch how much I love you. I can't wait to see you! 💖");
+
+}
+
+}
+
+</script>
